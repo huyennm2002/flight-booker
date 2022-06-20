@@ -1,0 +1,54 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Flight Booker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <%= form_with url: "/flights", action: :search, method: :get do |f| %>
+        <%# <%= form_for @flights, :url => {:controller => 'flights', :action => 'search'} do |f| %> %>
+        <div class="form-field">
+            <%= f.label "Departure from" %>
+            <%= f.select(
+                :departure_airport_id,
+                options_for_select(Airport.pluck(:code, :id), params[:departure_airport_id]),
+                required: true 
+                ) %>
+        </div>
+
+        <div class="form-field">
+            <%= f.label "Departure for" %>
+            <%= f.select(
+                :arrival_airport_id,
+                options_for_select(Airport.pluck(:code,:id), params[:destination_id]),
+                required: true 
+                ) %>
+        </div>
+
+        <div class="form-field">
+            <%= f.label "Number of passengers: " %>
+            <%= f.select(
+                :passenger_count,
+                options_for_select([1, 2, 3, 4], params[:passenger_count]),
+                required: true 
+                ) %>
+        </div>
+
+        <div class="form-field">
+            <%= f.label "Date" %>
+            <%= f.date_field :start_date_time,
+                value: params[:start_date_time],
+                required: true,
+                placeholder: "dd/mm/yyyy" %>
+        </div>
+
+        <div class="form-button">
+            <%= f.submit "Search Flights", class: "btn btn-outline-success my-2 my-sm-0" %>
+        </div>
+        <% end %>
+        </ul>
+    </div>
+    </nav>
+</div>
