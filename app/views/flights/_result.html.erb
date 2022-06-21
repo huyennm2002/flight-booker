@@ -1,0 +1,60 @@
+<div class="main-container">
+<%= form_with model: @bookings do |form|%>
+<div class="row">
+    <div class="col">
+        <p class="label">Choose your flight</p>
+    </div>
+    <div class="col">
+      <p class="label">Flight ID</p>
+    </div>
+
+    <div class="col">
+      <p class="label">Date</p>
+    </div>
+
+    <div class="col">
+      <p class="label">From</p>
+    </div>
+
+    <div class="col">
+      <p class="label">To</p>
+    </div>
+
+    <div class="col">
+      <p class="label">Duration (minutes)</p>
+    </div>
+</div>
+<% @flight.each do|f|%>
+<div >
+<div class="row">
+    <div class="col">
+        <%=form.radio_button :flight_id, f.id%>
+    </div>
+    <div class="col">
+      <p class="detail"><%= f.id %></p>
+    </div>
+
+    <div class="col">
+      <p class="detail"><%= f.start_date_time.strftime('%d.%m.%y') %></p>
+    </div>
+
+    <div class="col">
+      <p class="detail"><%= f.departure_airport.code %></p>
+      <%# <p class="detail"><%= f.departure_airport.location %></p>
+    </div>
+
+    <div class="col">
+      <p class="detail"><%= f.arrival_airport.code %></p>
+      <%# <p class="detail"><%= f.arrival_airport.location %></p>
+    </div>
+
+    <div class="col">
+      <p class="detail"><%= f.duration %></p>
+    </div>
+
+    
+  </div>
+<%end%>
+<%= form.submit "Continue with booking" %>
+<%end%>
+</div>
