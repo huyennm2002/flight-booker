@@ -1,0 +1,26 @@
+<%# <%binding.pry%>
+<% departure_airport = @selected_flight.departure_airport.code %>
+<% arrival_airport = @selected_flight.arrival_airport.code %>
+<% date = @selected_flight.start_date_time.strftime('%M %d, %Y') %>
+<% duration = @selected_flight.duration %>
+
+<section class="hero is-fullheight is-light is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns is-8 is-variable ">
+        <div class="column has-text-left">
+          <h1 class="title">
+            Your trip summary
+          </h1>
+          <h2 class="subtitle">
+            <%= date %> | <%= departure_airport %> - <%= arrival_airport %> | <%= duration %>
+          </h2>
+        </div>
+
+        <div class="column is-three-fifths has-text-left">
+          <%= render "booking_form"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

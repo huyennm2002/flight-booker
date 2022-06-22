@@ -1,5 +1,5 @@
 <div class="main-container">
-<%= form_with model: @bookings do |form|%>
+<%= form_with url: "bookings/new/", method: "get", local: true do |form|%>
 <div class="row">
     <div class="col">
         <p class="label">Choose your flight</p>
@@ -28,7 +28,7 @@
 <div >
 <div class="row">
     <div class="col">
-        <%=form.radio_button :flight_id, f.id%>
+        <%=form.radio_button :flight_id, f.id, local: true%>
     </div>
     <div class="col">
       <p class="detail"><%= f.id %></p>
@@ -55,6 +55,7 @@
     
   </div>
 <%end%>
+<%= hidden_field_tag :no_of_passengers, params[:passenger_count] %>
 <%= form.submit "Continue with booking" %>
 <%end%>
 </div>

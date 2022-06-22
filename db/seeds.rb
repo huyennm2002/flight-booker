@@ -12,7 +12,7 @@ Flight.destroy_all
 airports=Airport.create!([{code: "HAN", location: "Hanoi"}, {code: "SGN", location: "Ho Chi Minh City"}, {code: "DAD", location: "Da Nang"}, {code: "CXR", location: "Cam Ranh"},{code: "DLI", location: "Da Lat"},{code: "PQC", location: "Phu Quoc"},{code: "HPH", location: "Hai Phong"},{code: "UIH", location: "Quy Nhon"}])
 
 
-40.times do
+100.times do
     da_id = Airport.order(Arel.sql('RANDOM()')).first.id
     aa_id = Airport.order(Arel.sql('RANDOM()')).where('id != ?', da_id).first.id
     d_time = rand(30.days).seconds.from_now

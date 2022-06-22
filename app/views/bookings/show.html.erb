@@ -1,0 +1,69 @@
+<section class="hero is-fullheight is-light is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-half is-offset-one-quarter">
+        <h1 class="title">
+          Booking summary
+        </h1>
+        <h2 class="subtitle">
+         <%= @booking.flight.start_date_time.strftime('%d-%m-%Y') %>
+        </h2>
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Departure</th>
+              <th>Arrival</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @booking.flight.departure_airport.code %> <%= @booking.flight.start_date_time.strftime('%H:%M') %></td>
+              <td><%= @booking.flight.arrival_airport.code %></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h1 class="title">
+          Passenger details
+        </h1>
+        <table class="table is-fullwidth has-text-left">
+          <thead>
+            <tr>
+              <th>Passenger name</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @booking.passengers.each do |p| %>
+            <tr>
+              <td><%= passenger.name %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+  
+        <h1 class="title">
+          Contact details
+        </h1>
+        <table class="table is-fullwidth has-text-left">
+          <thead>
+            <tr>
+              <th>Passenger name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @booking.passengers.each_with_index do |passenger, idx| %>
+            <tr>
+              <td><%= passenger.name %></td>
+              <td><%= passenger.email %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+  
+        <%= link_to 'Book new flights', root_path, class: "button btn" %>
+
+      </div>
+    </div>
+  </div>
+</section>
