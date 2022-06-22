@@ -1,6 +1,6 @@
 <%= form_with model: @booking, local: true do |f| %>
   <% i = 1 %>
-  <%= f.fields_for :passengers, Passenger.new do |p| %>
+  <%= f.fields_for :passengers do |p| %>
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">
@@ -24,7 +24,7 @@
   <% end %>
   
   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
-
+  <%= f.hidden_field :no_of_passengers,value: params[:no_of_passengers]%>
   <div class="field">
     <div class="control">
       <%= f.submit 'Continue with payment', class: "button is-dark is-outlined" %>

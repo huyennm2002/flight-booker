@@ -1,4 +1,5 @@
 <%# <%binding.pry%>
+<% @selected_flight = Flight.find(params[:flight_id]) %>
 <% departure_airport = @selected_flight.departure_airport.code %>
 <% arrival_airport = @selected_flight.arrival_airport.code %>
 <% date = @selected_flight.start_date_time.strftime('%M %d, %Y') %>
